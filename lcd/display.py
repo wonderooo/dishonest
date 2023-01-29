@@ -1,4 +1,4 @@
-from magic_numbers import *
+from lcd.magic_numbers import *
 import gc
 
 class Display(object):
@@ -56,6 +56,10 @@ class Display(object):
             self.backgound_on = True
 
         gc.collect()
+
+    def replace_last(self, seq: str):
+        self.move_cursor(self.curr_x - 1, self.curr_y)
+        self.show_str(seq)
 
     def move_cursor(self, col: int, row: int):
         assert col < COLS and row < ROWS
